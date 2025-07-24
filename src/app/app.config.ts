@@ -5,7 +5,11 @@ import {
   withInterceptorsFromDi,
 } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
-import { BrowserModule } from '@angular/platform-browser';
+import {
+  BrowserModule,
+  provideClientHydration,
+  withEventReplay,
+} from '@angular/platform-browser';
 import { provideAnimations } from '@angular/platform-browser/animations';
 
 import { MatMenuModule } from '@angular/material/menu';
@@ -55,5 +59,6 @@ export const appConfig: ApplicationConfig = {
     CourseResolver,
     provideAnimations(),
     provideHttpClient(withInterceptorsFromDi(), withFetch()),
+    provideClientHydration(withEventReplay()),
   ],
 };
